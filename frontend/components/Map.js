@@ -17,6 +17,18 @@ export default function Map() {
     );
 
     setData(res.data);
+
+    // Ask permission
+Notification.requestPermission();
+
+// After fetching data
+res.data.forEach((eq) => {
+  if (eq.alert === "HIGH") {
+    new Notification("🚨 Earthquake Alert!", {
+      body: `${eq.properties.place} | Mag: ${eq.properties.mag}`,
+    });
+  }
+});
   });
 }, []);
 
