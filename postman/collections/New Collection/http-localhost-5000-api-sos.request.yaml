@@ -1,0 +1,14 @@
+$kind: http-request
+name: http://localhost:5000/api/sos
+url: http://localhost:5000/api/sos
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "name": "Akash",
+      "latitude": 28.61,
+      "longitude": 77.23,
+      "message": "Help needed!"
+    }
+order: 1775424986044
