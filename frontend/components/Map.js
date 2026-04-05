@@ -8,15 +8,17 @@ export default function Map() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await axios.get(
-        "http://localhost:5000/api/earthquakes?lat=28.61&lon=77.23"
-      );
-      setData(res.data);
-    };
+  navigator.geolocation.getCurrentPosition(async (pos) => {
+    const lat = pos.coords.latitude;
+    const lon = pos.coords.longitude;
 
-    fetchData();
-  }, []);
+    const res = await axios.get(
+      `http://localhost:5000/api/earthquakes?lat=${lat}&lon=${lon}`
+    );
+
+    setData(res.data);
+  });
+}, []);
 
   return (
     <MapContainer center={[20, 0]} zoom={2} style={{ height: "90vh" }}>
