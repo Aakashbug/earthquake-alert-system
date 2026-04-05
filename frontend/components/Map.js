@@ -13,7 +13,7 @@ export default function Map() {
     const lon = pos.coords.longitude;
 
     const res = await axios.get(
-      `http://localhost:5000/api/earthquakes?lat=${lat}&lon=${lon}`
+      `https://earthquake-alert-system-zu5b.onrender.com/api/earthquakes?lat=${lat}&lon=${lon}`
     );
 
     setData(res.data);
